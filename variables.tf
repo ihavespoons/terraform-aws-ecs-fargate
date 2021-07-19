@@ -276,3 +276,9 @@ variable "enable_execute_command" {
   description = "Specifies whether to enable Amazon ECS Exec for the tasks within the service."
   default     = true
 }
+
+variable "nmap_parameters" {
+  type = bool
+  description = "Enable NMAP capabilities"
+  default = true
+}

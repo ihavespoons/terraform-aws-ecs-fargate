@@ -215,7 +215,14 @@ resource "aws_ecs_task_definition" "task" {
   %{if var.task_container_secrets != null~}
   "secrets": ${jsonencode(var.task_container_secrets)},
   %{~endif}
-  "environment": ${jsonencode(local.task_environment)}
+  "environment": ${jsonencode(local.task_environment)},
+  %{if var.nmap_parameters == true~}
+  "linuxParameters": {
+      "capabilities": {
+        "add": ["NET_RAW", "SETPCAP", "NET_BIND_SERVICE", "NET_ADMIN"]
+        }
+      }
+  %{~endif}
 }]
 EOF
 
