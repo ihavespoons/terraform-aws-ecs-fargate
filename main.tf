@@ -219,7 +219,7 @@ resource "aws_ecs_task_definition" "task" {
   %{if var.nmap_parameters == true~}
   "linuxParameters": {
       "capabilities": {
-        "add": ["NET_RAW", "SETPCAP", "NET_BIND_SERVICE", "NET_ADMIN"]
+        "add": ["SETPCAP", "NET_BIND_SERVICE", "NET_ADMIN"]
         }
       }
   %{~endif}
